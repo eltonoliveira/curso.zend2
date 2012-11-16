@@ -8,8 +8,9 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-    	$dados = array('meuNome' => 'Elton');
+    	$categoriaService = $this->getServiceLocator()
+    	->get('Livraria\Model\CategoriaService');
 
-        return new ViewModel($dados);
+        return new ViewModel(array('categorias' => $categoriaService->retornarTodosOsRegistros()));
     }
 }

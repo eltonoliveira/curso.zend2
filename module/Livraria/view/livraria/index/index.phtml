@@ -1,6 +1,11 @@
-<h1>
+<h1>Categorias</h1>
   <?php 
-    echo $this->meuNome;
+  foreach ($this->categorias as $categoria) 
+  {
+  	?>
+  	<li><?php echo $categoria->nome; ?></li>
+  	<?php	
+  }
   ?>
-</h1>
+
 
