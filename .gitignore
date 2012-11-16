@@ -1,0 +1,16 @@
+#Arquivos e diretórios que não serão monitorados pelo Git
+
+.
+
+.settings/*
+
+library/Zend/*
+
+library/ZendX/*
+
+.buildpath
+
+.project
+
+.zfproject.xml
+
