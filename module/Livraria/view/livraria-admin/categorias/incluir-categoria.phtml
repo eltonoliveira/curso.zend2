@@ -1,0 +1,17 @@
+<h3>Nova categoria</h3>
+
+<?php
+$formulario = $this->formularioCategoria;
+
+$formulario->setAttribute('action', $this->url('livraria-admin', array(
+	'controller' => 'categorias',
+	'action' 	 => 'incluir-categoria'
+)));
+
+$formulario->prepare();
+echo $this->form()->openTag($formulario);
+echo $this->formHidden($formulario->get('id'));
+echo $this->formRow($formulario->get('nome')).'<br/>';
+echo $this->formSubmit($formulario->get('submit'));
+echo $this->form()->closeTag();
+?>

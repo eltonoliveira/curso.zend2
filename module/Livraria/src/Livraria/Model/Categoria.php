@@ -8,6 +8,11 @@ class Categoria
 
 	/** ------------------------------------------------------------------------------------------------------------- */
 
+	/**
+	* @name exchangeArray
+	* @return void
+	*
+	*/
 	public function exchangeArray($dados)
 	{
 		$this->id 	= isset($dados['id']) ? $dados['id'] : NULL;

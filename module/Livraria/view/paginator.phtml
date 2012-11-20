@@ -1,0 +1,62 @@
+<?php
+$urlPattern = $_SERVER['REQUEST_URI'];
+$formatUrl = function ($pagina) use ($urlPattern) {
+            if (!preg_match('/pagina/', $urlPattern))
+                return $urlPattern . "/pagina/" . $pagina;
+            else
+                return preg_replace('/\d/', $pagina, $urlPattern);
+        };
+?>
+
+
+<div class="pagination pagination-right">
+    
+    <?php if ($this->pageCount): ?>
+            <div class="paginationControl">
+            <?php echo $this->firstItemNumber; ?> - <?php echo $this->lastItemNumber; ?> de <?php echo $this->totalItemCount; ?> páginas
+                <br />
+
+
+                <!-- First page link -->
+        <?php if (isset($this->previous)): ?>
+                    <a href="<?php echo $formatUrl($this->first) ?>">
+                        Primeira
+                    </a> |
+        <?php else: ?>
+                    <span class="disabled">Primeira</span> |
+                <?php endif; ?>
+
+
+                <!-- Previous page link -->
+        <?php if (isset($this->previous)): ?>
+                    <a href="<?php echo $formatUrl($this->previous) ?>">
+                        < Anterior
+                    </a> |
+        <?php else: ?>
+                    <span class="disabled">< Anterior</span> |
+                <?php endif; ?>
+
+
+                <!-- Next page link -->
+        <?php if (isset($this->next)): ?>
+                    <a href="<?php echo $formatUrl($this->next); ?>">
+                        Próxima >
+                    </a> |
+        <?php else: ?>
+                    <span class="disabled">Próxima ></span> |
+                <?php endif; ?>
+
+
+                <!-- Last page link -->
+        <?php if (isset($this->next)): ?>
+                    <a href="<?php echo $formatUrl($this->last); ?>">
+                        Última
+                    </a>
+        <?php else: ?>
+                    <span class="disabled">Última</span>
+                <?php endif; ?>
+
+            </div>
+
+    <?php endif; ?>
+</div>

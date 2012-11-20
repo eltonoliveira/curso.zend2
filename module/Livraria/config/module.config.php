@@ -15,11 +15,22 @@ return array(
                     ),
                 ),
             ),
+            'livraria-admin' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/admin/[:controller[/:action][/pagina/:pagina]]',
+                    'defaults' => array(
+                        'action' => 'index',
+                        'pagina' => 1
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'Livraria\Controller\Index' => 'Livraria\Controller\IndexController'
+            'Livraria\Controller\Index' => 'Livraria\Controller\IndexController',
+            'categorias' => 'LivrariaAdmin\Controller\CategoriasController'
         ),
     ),
     'view_manager' => array(

@@ -1,11 +1,13 @@
 <h1>Categorias</h1>
-  <?php 
-  foreach ($this->categorias as $categoria) 
-  {
-  	?>
-  	<li><?php echo $categoria->getNome(); ?></li>
-  	<?php	
-  }
+	<?php 
+  	if($this->categorias)
+  	{
+	  	foreach ($this->categorias as $categoria) 
+	  	{
+	  		?>
+	  		<li><?php echo $categoria->getNome(); ?></li>
+	  		<?php	
+	  	}
+	}
+
   ?>
-
-

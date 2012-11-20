@@ -8,6 +8,13 @@ class CategoriaService
 	*/
 	protected $categoriaTable;
 
+	/** ------------------------------------------------------------------------------------------------------------- */
+
+	/**
+	* @name __construct
+	* @return void
+	*
+	*/
 	public function __construct(CategoriaTable $table)
 	{
 		$this->categoriaTable = $table;

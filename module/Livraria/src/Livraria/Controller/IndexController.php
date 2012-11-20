@@ -6,17 +6,46 @@ use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+        /**
+    * @var EntityManager
+    */
+    protected $_entityManager;
+
+    /** ------------------------------------------------------------------------------------------------------------- */
+
     public function indexAction()
     {	
-    	/** via Zend DB
-    	$categoriaService = $this->getServiceLocator()
-    	->get('Livraria\Model\CategoriaService');
-		*/
+    	/** via Zend db*/
+    	$categoriaService   = $this->getServiceLocator()->get('Livraria\Model\CategoriaService');
+    	$categorias2		= $categoriaService->retornarTodosOsRegistros();
+		
+		/** via Doctrine */
+		$categorias 	= self::getEntityManager()->getRepository('Livraria\Entity\Categorias')->findAll();
 
-		$entityManager  = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-		$repositorio	= $entityManager->getRepository('Livraria\Entity\Categoria');
-		$categorias 	= $repositorio->findAll();
+        return new ViewModel(array(
+            'categorias' => $categorias, 
+            'conexao' => '')
 
-        return new ViewModel(array('categorias' => $categorias));
+        );
     }
+
+    /** ------------------------------------------------------------------------------------------------------------- */
+
+    /**
+    * @name getEntityManager
+    * @return EntityManager
+    */
+    protected function getEntityManager()
+    {
+        if($this->_entityManager === NULL)
+        {
+            $this->_entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        }
+
+        return $this->_entityManager;
+    }
+
+    /** ------------------------------------------------------------------------------------------------------------- */
+
+
 }
